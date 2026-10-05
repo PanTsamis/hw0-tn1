@@ -28,12 +28,17 @@ class Searches:
 from collections import deque
 
 class Searches:
-    
     def breadthFirst(self, adj: list[list[int]], start: int):
         queue = deque([start])
         visited = set([start])
         while queue:
             node = queue.pop()
             print(node)
-            for i in adj[node]:
-            
+            for neig in adj[node]:
+                if neig not in visited:
+                    visited.add(neig)
+                    # tree edge
+                    queue.appendleft(neig)
+                else if neig != node:
+                    # cross edge
+                    continue
